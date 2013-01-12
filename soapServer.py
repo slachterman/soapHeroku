@@ -21,10 +21,14 @@ class DemoService(enterprise.SOAPService):
         return results
     
     @enterprise.soap(_returns=enterprise._sp.String)
-    def notifications(self):
+    def notifications(self, Account):
         Ack = 'true'
         return Ack
 
+class Account(object):
+    pass
+    
+        
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
