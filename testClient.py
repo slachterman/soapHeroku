@@ -5,3 +5,5 @@ client = suds.client.Client(url)
 
 sTime = client.service.get_time()
 print sTime
+
+print client.service.notifications()

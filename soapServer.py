@@ -18,7 +18,7 @@ class DemoService(enterprise.SOAPService):
             results.append('Hello, %s' % name)
         return results
     
-    @enterprise.soap(_returns=enterprise._sp.String)
+    @enterprise.soap(_returns=enterprise._sp.String, __soap_target_namespace__ = "http://soap.sforce.com/2005/09/outbound")
     def notifications(self):
         return 'Yep.'
 
