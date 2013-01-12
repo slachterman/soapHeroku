@@ -22,7 +22,8 @@ class DemoService(enterprise.SOAPService):
     
     @enterprise.soap(_returns=enterprise._sp.String)
     def notifications(self):
-        return True
+        Ack = 'true'
+        return Ack
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
