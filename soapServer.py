@@ -17,6 +17,10 @@ class DemoService(enterprise.SOAPService):
         for i in range(0, times):
             results.append('Hello, %s' % name)
         return results
+    
+    @enterprise.soap(_returns=enterprise._sp.String)
+    def notifications(self):
+        return 'Yep.'
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
