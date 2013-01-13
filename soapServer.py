@@ -13,8 +13,6 @@ class Account(enterprise._scls.ClassModel):
 class DemoService(enterprise.SOAPService):
     __soap_target_namespace__ = 'http://soap.sforce.com/2005/09/outbound'
     
-    account = Account() 
-    
     @enterprise.soap(_returns=enterprise._sp.String)
     def get_time(self):
         return ctime()
@@ -26,10 +24,10 @@ class DemoService(enterprise.SOAPService):
             results.append('Hello, %s' % name)
         return results
     
-    @enterprise.soap(account, _returns=enterprise._sp.Boolean)
-    def notifications(self, account):
+    @enterprise.soap(Account(), _returns=enterprise._sp.Boolean)
+    def notifications(self, acct):
         Ack = True
-        print account.Id
+        print acct.Id
         return Ack
  
 if __name__ == '__main__':
