@@ -7,7 +7,7 @@ app = Flask(__name__)
 enterprise = Enterprise(app)
 
 class Account(enterprise._scls.ClassModel):
-    __namespace__ = 'tns'
+    __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
     Id = enterprise._sp.String
     
 class DemoService(enterprise.SOAPService):
@@ -27,7 +27,7 @@ class DemoService(enterprise.SOAPService):
     @enterprise.soap(Account(), _returns=enterprise._sp.Boolean)
     def notifications(self, acct):
         Ack = True
-        print acct.Id
+        #print acct.Id
         return Ack
  
 if __name__ == '__main__':
