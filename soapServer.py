@@ -29,6 +29,7 @@ class DemoService(enterprise.SOAPService):
     @enterprise.soap(account, _returns=enterprise._sp.Boolean)
     def notifications(self, account):
         Ack = True
+        print account.Id
         return Ack
  
 if __name__ == '__main__':
