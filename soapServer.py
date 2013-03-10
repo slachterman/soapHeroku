@@ -9,8 +9,6 @@ enterprise = Enterprise(app)
 class Account(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
     Id = enterprise._sp.Integer
-    def __init__(self, id):
-        self.Id = id
     
 class DemoService(enterprise.SOAPService):
     __soap_target_namespace__ = 'http://soap.sforce.com/2005/09/outbound'
@@ -26,7 +24,7 @@ class DemoService(enterprise.SOAPService):
             results.append('Hello, %s' % name)
         return results
     
-    @enterprise.soap(Account(2), _returns=enterprise._sp.Boolean)
+    @enterprise.soap(Account(), _returns=enterprise._sp.Boolean)
     def notifications(self, acct):
         Ack = True
         #print acct.Id
