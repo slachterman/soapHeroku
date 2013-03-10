@@ -27,7 +27,6 @@ class DemoService(enterprise.SOAPService):
     @enterprise.soap(Account(), _returns=enterprise._sp.Boolean)
     def notifications(self, acct):
         Ack = True
-        print acct.Id
         #print acct.Id
         return Ack
  
