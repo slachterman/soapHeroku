@@ -16,7 +16,7 @@ class ID(enterprise._scls.ClassModel):
 
 class sObject(enterprise._scls.ClassModel):
     __namespace__ = 'urn:sobject.enterprise.soap.sforce.com'    
-    Id = String
+    Id = ID
     
 class Account(sObject):
     __namespace__ = 'urn:sobject.enterprise.soap.sforce.com'    
@@ -25,7 +25,7 @@ class Account(sObject):
     
 class AccountNotification(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
-    Id = Integer
+    Id = ID
     sObject = Account
     
 class DemoService(enterprise.SOAPService):
