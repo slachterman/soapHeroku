@@ -10,7 +10,7 @@ Array = enterprise._scls.Array
 String = enterprise._sp.String
 Integer = enterprise._sp.Integer
 
-class ID(enterprise._scls.ClassModel):
+class ID(String):
     __namespace__ = 'urn:enterprise.soap.sforce.com'
     Id = String
 
