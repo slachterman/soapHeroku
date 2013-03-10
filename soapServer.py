@@ -8,14 +8,14 @@ enterprise = Enterprise(app)
 
 class Account(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
-    Id = Id()
+    Id = enterprise._sp.Integer
 
 class Id(enterprise._sp.String):
     __namespace__ = 'urn:enterprise.soap.sforce.com'
-
+    
 class AccountNotification(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
-    Id = Id()
+    Id = enterprise._sp.Integer
     Account = Account()
     
 class DemoService(enterprise.SOAPService):
