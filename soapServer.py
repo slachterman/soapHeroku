@@ -10,24 +10,25 @@ Array = enterprise._scls.Array
 String = enterprise._sp.String
 Integer = enterprise._sp.Integer
 
-class Id(enterprise._scls.ClassModel):
+class ID(enterprise._scls.ClassModel):
     __namespace__ = 'urn:enterprise.soap.sforce.com'
     Id = String
 
 class Account(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'    
-    name = String
-    Id = Integer(Id)
+    Id = String
+    AccountNumber = Integer
+    Type = String
     
 class AccountNotification(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
     Id = Integer
-    Account = Account()
+    sObject = Array(Account)
     
 class DemoService(enterprise.SOAPService):
     __soap_target_namespace__ = 'http://soap.sforce.com/2005/09/outbound'
     
-    @enterprise.soap(Id(), Id(), String, String, String, AccountNotification, _returns=enterprise._sp.Boolean)
+    @enterprise.soap(ID(), ID(), String, String, String, AccountNotification, _returns=enterprise._sp.Boolean)
     def notifications(self, OrganizationId, ActionId, SessionId, EnterpriseUrl, PartnerUrl, Notification):
         Ack = True
         #print acct.Id
