@@ -15,7 +15,7 @@ class Id(enterprise._scls.ClassModel):
 class Account(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'    
     name = enterprise._sp.String
-    myId = Array(Id)
+    myId = Id()
     
 class AccountNotification(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
