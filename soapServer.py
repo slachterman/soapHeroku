@@ -30,7 +30,7 @@ class DemoService(enterprise.SOAPService):
     def notifications(self, acct):
         Ack = True
         #print acct.Id
-        #return Ack
+        return Ack
  
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
