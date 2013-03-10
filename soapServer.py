@@ -14,9 +14,12 @@ class ID(enterprise._scls.ClassModel):
     __namespace__ = 'urn:enterprise.soap.sforce.com'
     Id = String
 
-class Account(enterprise._scls.ClassModel):
+class sObject(enterprise._scls.ClassModel):
     __namespace__ = 'urn:sobject.enterprise.soap.sforce.com'    
     Id = String
+    
+class Account(sObject):
+    __namespace__ = 'urn:sobject.enterprise.soap.sforce.com'    
     AccountNumber = Integer
     Type = String
     
