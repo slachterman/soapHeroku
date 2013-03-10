@@ -35,6 +35,7 @@ class DemoService(enterprise.SOAPService):
     def notifications(self, OrganizationId, ActionId, SessionId, EnterpriseUrl, PartnerUrl, Notification):
         Ack = True
         print Notification.sObject.Id
+        print Notification.sObject.Type
         return Ack
  
 if __name__ == '__main__':
