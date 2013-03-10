@@ -25,8 +25,8 @@ class AccountNotification(enterprise._scls.ClassModel):
 class DemoService(enterprise.SOAPService):
     __soap_target_namespace__ = 'http://soap.sforce.com/2005/09/outbound'
     
-    @enterprise.soap(Id(), Account(), _returns=enterprise._sp.Boolean)
-    def notifications(self, orgId, acct):
+    @enterprise.soap(Id(), Account(), AccountNotification(), _returns=enterprise._sp.Boolean)
+    def notifications(self, orgId, acct, acctNotif):
         Ack = True
         #print acct.Id
         return Ack
