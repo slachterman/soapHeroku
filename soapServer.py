@@ -7,26 +7,28 @@ app = Flask(__name__)
 enterprise = Enterprise(app)
 
 Array = enterprise._scls.Array
+String = enterprise._sp.String
+Integer = enterprise._sp.Integer
 
 class Id(enterprise._scls.ClassModel):
     __namespace__ = 'urn:enterprise.soap.sforce.com'
-    Id = enterprise._sp.String
+    Id = String
 
 class Account(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'    
-    name = enterprise._sp.String
+    name = String
     myId = Id()
     
 class AccountNotification(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
-    Id = enterprise._sp.Integer
+    Id = Integer
     Account = Account()
     
 class DemoService(enterprise.SOAPService):
     __soap_target_namespace__ = 'http://soap.sforce.com/2005/09/outbound'
     
-    @enterprise.soap(Id(), Account(), AccountNotification(), _returns=enterprise._sp.Boolean)
-    def notifications(self, orgId, acct, acctNotif):
+    @enterprise.soap(Id(), Id(), String, String, String, Array(AccountNotification), _returns=enterprise._sp.Boolean)
+    def notifications(self, OrganizationId, ActionId, SessionId, EnterpriseUrl, PartnerUrl, Notification):
         Ack = True
         #print acct.Id
         return Ack
