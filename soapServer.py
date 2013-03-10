@@ -6,8 +6,10 @@ from flaskext.enterprise import Enterprise
 app = Flask(__name__)
 enterprise = Enterprise(app)
 
+Array = enterprise._scls.Array
+
 class Account(enterprise._scls.ClassModel):
-    __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
+    __namespace__ = 'http://soap.sforce.com/2005/09/outbound'    
     name = enterprise._sp.String
     myId = Array(Id)
    
