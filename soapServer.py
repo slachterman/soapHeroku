@@ -17,7 +17,7 @@ class Id(enterprise._scls.ClassModel):
 class Account(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'    
     name = String
-    myId = Id()
+    Id = Integer(Id)
     
 class AccountNotification(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
@@ -27,7 +27,7 @@ class AccountNotification(enterprise._scls.ClassModel):
 class DemoService(enterprise.SOAPService):
     __soap_target_namespace__ = 'http://soap.sforce.com/2005/09/outbound'
     
-    @enterprise.soap(Id(), Id(), String, String, String, Array(AccountNotification), _returns=enterprise._sp.Boolean)
+    @enterprise.soap(Id(), Id(), String, String, String, AccountNotification, _returns=enterprise._sp.Boolean)
     def notifications(self, OrganizationId, ActionId, SessionId, EnterpriseUrl, PartnerUrl, Notification):
         Ack = True
         #print acct.Id
