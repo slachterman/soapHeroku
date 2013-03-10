@@ -34,7 +34,7 @@ class DemoService(enterprise.SOAPService):
     @enterprise.soap(ID(), ID(), String, String, String, AccountNotification(), _returns=enterprise._sp.Boolean)
     def notifications(self, OrganizationId, ActionId, SessionId, EnterpriseUrl, PartnerUrl, Notification):
         Ack = True
-        #print acct.Id
+        print Notification.sObject.Id
         return Ack
  
 if __name__ == '__main__':
