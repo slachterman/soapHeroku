@@ -23,7 +23,7 @@ class Account(enterprise._scls.ClassModel):
 class AccountNotification(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
     Id = Integer
-    sObject = Array(Account)
+    sObject = Account()
     
 class DemoService(enterprise.SOAPService):
     __soap_target_namespace__ = 'http://soap.sforce.com/2005/09/outbound'
