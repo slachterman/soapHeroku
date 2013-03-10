@@ -9,20 +9,14 @@ enterprise = Enterprise(app)
 class Account(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
     Id = enterprise._sp.Integer
+
+class AccountNotification(enterprise._scls.ClassModel):
+    __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
+    Id = enterprise._sp.Integer
+    Account = Account()
     
 class DemoService(enterprise.SOAPService):
     __soap_target_namespace__ = 'http://soap.sforce.com/2005/09/outbound'
-    
-    @enterprise.soap(_returns=enterprise._sp.String)
-    def get_time(self):
-        return ctime()
-    
-    @enterprise.soap(enterprise._sp.String,enterprise._sp.Integer,_returns=enterprise._scls.Array(enterprise._sp.String))
-    def say_hello(self,name,times):
-        results = []
-        for i in range(0, times):
-            results.append('Hello, %s' % name)
-        return results
     
     @enterprise.soap(Account(), _returns=enterprise._sp.Boolean)
     def notifications(self, acct):
