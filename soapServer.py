@@ -8,14 +8,14 @@ enterprise = Enterprise(app)
 
 Array = enterprise._scls.Array
 
+class Id(enterprise._scls.ClassModel):
+    __namespace__ = 'urn:enterprise.soap.sforce.com'
+    Id = enterprise._sp.String
+
 class Account(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'    
     name = enterprise._sp.String
     myId = Array(Id)
-   
-class Id(enterprise._scls.ClassModel):
-    __namespace__ = 'urn:enterprise.soap.sforce.com'
-    Id = enterprise._sp.String
     
 class AccountNotification(enterprise._scls.ClassModel):
     __namespace__ = 'http://soap.sforce.com/2005/09/outbound'
